@@ -35,12 +35,15 @@ Pumps.prototype = {
         }
     },
     dispose : function () {
+        var that = this;
         this._pumpsArry.forEach(function (pump) {
             
             pump.dispose();
-            delete this._pumps[pump.__pumpname__];
-            if (this._specialNames.indexOf(n) < 0) {
-                delete this[pump.__pumpname__];
+
+            delete that._pumps[pump.__pumpname__];
+
+            if (that._specialNames.indexOf(n) < 0) {
+                delete that[pump.__pumpname__];
             }
         });
         this.isSetup = false;
