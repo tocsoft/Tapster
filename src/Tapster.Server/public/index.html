@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="tapster">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/angular-touch.js"></script>
+    <script src="js/lodash.underscore.js"></script>
+    <script src="js/restangular.js"></script>
+    <script src="app/app.js"></script>
+</head>
+<body>
+    <div ng-controller="PumpsController">
+        <button ng-click="stopAll()">Stop All</button>
+        <button ng-click="forwardAll()">Forward All</button>
+        <button ng-click="reverseAll()">Reverse All</button>
+
+        <ol>
+            <li ng-repeat="pump in pumps">
+
+                <h1>{{pump.name}}</h1>
+                <span>{{pump.status}}</span>
+                <span ng-show="pump.status == 'running'"> - {{pump.direction}}</span>
+                <div ng-if="pump.status == 'running'">
+                    <button ng-click="pump.stop()">Stop</button>
+                </div>
+                <div ng-if="pump.status != 'running'">
+                    <button ng-click="pump.forward()">Forward</button>
+                    <button ng-click="pump.reverse()">Reverse</button>
+                </div>
+            </li>
+
+        </ol>
+    </div>
+</body>
+</html>
